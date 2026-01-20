@@ -12,7 +12,7 @@ export default function Challenge07Page() {
 	const challenge = {
 		title: "動態目標",
 		description: "這個控制單元似乎拒絕被存取。請嘗試手動覆寫它的指令。",
-		flag: "OhYeahSeC{K3yb0ard_Warri0r_B3ats_M0use}"
+		flag: "OhYeahSeC{D0m_Ev3n7_M4n1puLa710n_1s_Fun}"
 	};
 
 	// 移動按鈕邏輯
