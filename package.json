@@ -9,10 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "next": "15.1.7",
-    "react": "^19.0.0",
+    "next": "^16.1.4",
+    "react": "^19.2.3",
     "react-confetti": "^6.2.3",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.2.3"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
