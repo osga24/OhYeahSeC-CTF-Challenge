@@ -1,26 +1,28 @@
 // src/app/challenge/8/page.tsx
 "use client";
 
-import React, { useState, useEffect, useRef, FormEvent } from 'react';
-import { useRouter } from 'next/navigation';
-import LetterGlitch from '../../components/LetterGlitch';
+import React, { useState, useEffect, useRef, FormEvent } from "react";
+import { useRouter } from "next/navigation";
+import LetterGlitch from "../../components/LetterGlitch";
 
 // 第八關挑戰頁面
 export default function Challenge8Page() {
   const level = 8;
-  const [userInput, setUserInput] = useState('');
-  const [feedback, setFeedback] = useState('');
+  const [userInput, setUserInput] = useState("");
+  const [feedback, setFeedback] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
 
   // 登入平台網址
-  const loginURL = "https://secret-system.ohyeahsec.org/"; // 替換為你的實際登入頁面URL
+  const loginURL =
+    "oysc-challenge-panel-challenge-q40x6pmx2-osga24s-projects.vercel.app";
 
   // 題目內容
   const challenge = {
     title: "管理員登入",
-    description: "我們發現了一個可疑的登入頁面，據信這裡存放了重要的機密資訊。嘗試找出管理員的憑證並成功登入系統。FLAG就在前端的某處。",
-    flag: "OYSC{FR0NT3ND_S3CR3TS_4R3_N3V3R_S4F3}" // 確保這與你隱藏在前端的FLAG一致
+    description:
+      "我們發現了一個可疑的登入頁面，據信這裡存放了重要的機密資訊。嘗試找出管理員的憑證並成功登入系統。FLAG就在前端的某處。",
+    flag: "OYSC{FR0NT3ND_S3CR3TS_4R3_N3V3R_S4F3}", // 確保這與你隱藏在前端的FLAG一致
   };
 
   // 自動聚焦輸入框
@@ -39,16 +41,16 @@ export default function Challenge8Page() {
     const correctFlag = challenge.flag.trim();
 
     if (trimmedInput === correctFlag) {
-      setFeedback('恭喜！FLAG正確。正在前往下一關...');
+      setFeedback("恭喜！FLAG正確。正在前往下一關...");
 
       // 延遲跳轉到下一關
       setTimeout(() => {
-        router.push('/challenge/9_tFwbyvOPpotb');
+        router.push("/challenge/9_tFwbyvOPpotb");
       }, 2000);
     } else {
-      setFeedback('FLAG不正確，請再試一次。');
+      setFeedback("FLAG不正確，請再試一次。");
       setTimeout(() => {
-        setFeedback('');
+        setFeedback("");
       }, 3000);
     }
   };
@@ -57,7 +59,7 @@ export default function Challenge8Page() {
       {/* 背景效果 */}
       <div className="absolute inset-0 opacity-20">
         <LetterGlitch
-          glitchColors={['#1a3b4c', '#4dc3a1', '#3498db']}
+          glitchColors={["#1a3b4c", "#4dc3a1", "#3498db"]}
           glitchSpeed={50}
           centerVignette={false}
           outerVignette={true}
@@ -77,9 +79,7 @@ export default function Challenge8Page() {
         {/* 內容區域 */}
         <div className="w-full max-w-4xl px-6 py-8 bg-gradient-to-b from-gray-900/70 to-black/70 rounded-lg shadow-2xl mx-auto mb-8">
           {/* 題目描述 */}
-          <div className="mb-8 text-lg font-mono">
-            {challenge.description}
-          </div>
+          <div className="mb-8 text-lg font-mono">{challenge.description}</div>
 
           {/* 網頁登入鏈結 */}
           <div className="mb-12 flex flex-col items-center">
@@ -92,8 +92,17 @@ export default function Challenge8Page() {
               rel="noopener noreferrer"
               className="px-6 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 text-white text-lg font-bold rounded-lg hover:from-blue-700 hover:to-cyan-700 transition-all duration-300 transform hover:scale-105 flex items-center space-x-2"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                <path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
+                  clipRule="evenodd"
+                />
               </svg>
               <span>開啟登入頁面</span>
             </a>
@@ -128,7 +137,9 @@ export default function Challenge8Page() {
 
               {/* 反饋信息 */}
               {feedback && (
-                <div className={`mt-4 px-6 py-3 rounded-lg ${feedback.includes('恭喜') ? 'bg-green-700/50' : 'bg-red-700/50'}`}>
+                <div
+                  className={`mt-4 px-6 py-3 rounded-lg ${feedback.includes("恭喜") ? "bg-green-700/50" : "bg-red-700/50"}`}
+                >
                   {feedback}
                 </div>
               )}

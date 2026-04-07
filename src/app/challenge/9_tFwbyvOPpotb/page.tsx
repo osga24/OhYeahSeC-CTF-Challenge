@@ -1,26 +1,28 @@
 // src/app/challenge/9/page.tsx
 "use client";
 
-import React, { useState, useEffect, useRef, FormEvent } from 'react';
-import { useRouter } from 'next/navigation';
-import LetterGlitch from '../../components/LetterGlitch';
+import React, { useState, useEffect, useRef, FormEvent } from "react";
+import { useRouter } from "next/navigation";
+import LetterGlitch from "../../components/LetterGlitch";
 
 // 第九關挑戰頁面
 export default function Challenge9Page() {
   const level = 9;
-  const [userInput, setUserInput] = useState('');
-  const [feedback, setFeedback] = useState('');
+  const [userInput, setUserInput] = useState("");
+  const [feedback, setFeedback] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
 
   // 登入平台網址
-  const loginURL = "https://cyber-defender.ohyeahsec.org/"; // 替換為實際的網站URL
+  const loginURL =
+    "oysc-challenge-panel-challenge-yeyj-ri22qrktr-osga24s-projects.vercel.app";
 
   // 題目內容 - 結合之前的世界觀
   const challenge = {
     title: "守護者的第一道防線",
-    description: "系統監測顯示，入侵者已經突破了多個安全節點。作為數位守護者，你必須迅速找出隱藏的系統弱點。每一個被遺忘的數位足跡都可能成為拯救「新紀元」的關鍵。\n\n監測數據警示：若不能在限定時間內修復所有節點，防火牆將徹底崩潰，數百萬用戶的數據將暴露於黑暗網路中。",
-    flag: "OYSC{R0B0TS_TXT_1S_N0T_4_S3CUR1TY_M3CHANISM}"
+    description:
+      "系統監測顯示，入侵者已經突破了多個安全節點。作為數位守護者，你必須迅速找出隱藏的系統弱點。每一個被遺忘的數位足跡都可能成為拯救「新紀元」的關鍵。\n\n監測數據警示：若不能在限定時間內修復所有節點，防火牆將徹底崩潰，數百萬用戶的數據將暴露於黑暗網路中。",
+    flag: "OYSC{R0B0TS_TXT_1S_N0T_4_S3CUR1TY_M3CHANISM}",
   };
 
   // 自動聚焦輸入框
@@ -39,16 +41,16 @@ export default function Challenge9Page() {
     const correctFlag = challenge.flag.trim();
 
     if (trimmedInput === correctFlag) {
-      setFeedback('數據節點修復成功！系統防禦再次穩定...');
+      setFeedback("數據節點修復成功！系統防禦再次穩定...");
 
       // 延遲跳轉到下一關
       setTimeout(() => {
-        router.push('/challenge/10_HmfPsygKVlEX');
+        router.push("/challenge/10_HmfPsygKVlEX");
       }, 2000);
     } else {
-      setFeedback('節點修復失敗！系統防禦仍然脆弱...');
+      setFeedback("節點修復失敗！系統防禦仍然脆弱...");
       setTimeout(() => {
-        setFeedback('');
+        setFeedback("");
       }, 3000);
     }
   };
@@ -56,8 +58,8 @@ export default function Challenge9Page() {
     <div className="relative h-screen bg-black overflow-hidden text-white">
       {/* 背景效果 */}
       <div className="absolute inset-0 opacity-20">
-      <LetterGlitch
-          glitchColors={['#1a3b4c', '#4dc3a1', '#3498db']}
+        <LetterGlitch
+          glitchColors={["#1a3b4c", "#4dc3a1", "#3498db"]}
           glitchSpeed={50}
           centerVignette={false}
           outerVignette={true}
@@ -92,8 +94,17 @@ export default function Challenge9Page() {
               rel="noopener noreferrer"
               className="px-6 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 text-white text-lg font-bold rounded-lg hover:from-blue-700 hover:to-cyan-700 transition-all duration-300 transform hover:scale-105 flex items-center space-x-2"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                <path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
+                  clipRule="evenodd"
+                />
               </svg>
               <span>進入數位戰場</span>
             </a>
@@ -125,7 +136,9 @@ export default function Challenge9Page() {
 
               {/* 反饋信息 */}
               {feedback && (
-                <div className={`mt-4 px-6 py-3 rounded-lg ${feedback.includes('成功') ? 'bg-green-700/50' : 'bg-red-700/50'}`}>
+                <div
+                  className={`mt-4 px-6 py-3 rounded-lg ${feedback.includes("成功") ? "bg-green-700/50" : "bg-red-700/50"}`}
+                >
                   {feedback}
                 </div>
               )}
